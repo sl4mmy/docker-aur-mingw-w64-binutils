@@ -20,11 +20,11 @@ ENV VERSION ${VERSION}
 
 ENV REFRESHED_AT ${DATE}
 
-USER _build
-WORKDIR /opt/aur-mingw-w64-binutils
-
 # Populate mingw-w64-binutils pkg spec
 COPY --chown=_build:_build aur-mingw-w64-binutils/ /opt/aur-mingw-w64-binutils/
+
+USER _build
+WORKDIR /opt/aur-mingw-w64-binutils
 
 # Build the package
 CMD [ "/usr/bin/makepkg", "--clean", "--needed", "--noconfirm", "--rmdeps", "--skippgpcheck", "--syncdeps" ]
